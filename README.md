@@ -28,7 +28,13 @@
  
  you can use this link for refrence if you nedd any extra information
 
+ if you want to add carousel than you can add that using
+ 
+    $ npm install --save react-native-snap-carousel
 
+and can use this as refreance and usage of carousel
+
+https://www.npmjs.com/package/react-native-snap-carousel
 
 
 **Thankyou**
