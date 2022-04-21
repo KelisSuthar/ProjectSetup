@@ -94,7 +94,12 @@ export const CommonButton = ({button_text, ...props}) => {
       />
     );
   };
-  
+  export const ImageButton = ({...props}) => {
+    <TouchableOpacity onPress={props.onPress}
+    >
+      <Image source={props.source}></Image>
+    </TouchableOpacity>
+  }
   export const CommonTexts = ({string, ...props}) => {
     return (
       <Text
