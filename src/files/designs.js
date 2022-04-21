@@ -11,6 +11,58 @@ import {
 import {getHeightPer, getWidthPer} from '../Strings/strings';
 import {coomonStyles} from '../Styles/commonStyles';
 
+
+
+export const CustomTextInput = ({onSubmit, refrance, ...props}) => {
+  const [secureEntry, setsecureEntry] = React.useState(true);
+  return (
+    <View
+      style={{
+        flexDirection: 'row',
+        backgroundColor: colors.primaryGrey2,
+        borderRadius: 20,
+        width: props.width,
+        marginTop: props.marginTop,
+        marginBottom: props.marginBottom,
+        marginVertical: props.marginVertical,
+        marginLeft: props.marginLeft,
+        marginRight: props.marginRight,
+        alignSelf: props.alignSelf,
+      }}>
+      <TextInput
+      keyboardType = {props.keyboardType}
+        placeholder={props.placeholder}
+        onSubmitEditing={onSubmit}
+        maxLength = {props.maxLength}
+        value = {props.value}
+        secureTextEntry={props.iseyeshow ? secureEntry : false}
+        returnKeyType={props.returnKeyType}
+        ref={refrance}
+        onChangeText={props.onChangeText}
+        style={{
+          width: props.iseyeshow ? '90%' : '100%',
+          padding: 15,
+          fontSize: 20,
+          position: props.position,
+          justifyContent: 'center',
+          bottom: props.bottom,
+          margin: props.margin,
+        }}
+      />
+      {props.iseyeshow ? (
+        <Ionicons
+          onPress={() =>
+            secureEntry ? setsecureEntry(false) : setsecureEntry(true)
+          }
+          name={secureEntry ? 'eye-off' : 'eye'}
+          size={30}
+          color="grey"
+          style={{alignSelf: 'center'}}></Ionicons>
+      ) : null}
+    </View>
+  );
+};
+
 export const CommonButton = ({button_text, ...props}) => {
   return (
     <TouchableOpacity
@@ -132,52 +184,45 @@ export const CommonTexts = ({string, ...props}) => {
   );
 };
 
-export const CommonHeadder = ({string, ...props}) => {
+export const CommonHeadder = ({ ...props}) => {
   return (
     <View
       style={{
-        marginTop: 16,
+        marginTop: Platform.OS === 'android' ? 16 : 0,
         height: props.height,
         width: props.width,
         flexDirection: 'row',
         top: props.top,
+        alignSelf: 'center',
+        
+        justifyContent:'center',
         position: props.position,
       }}>
       {props.isLeftIconShow ? (
+        <View style = {{position:'absolute',left:0}}>
         <MaterialIcons
-          style
+          
           width="10%"
           name={props.isCloseShow ? 'close' : 'arrow-back-ios'}
           color={'#F65E7F'}
           size={30}
           onPress={props.onPress}
         />
+        </View>
       ) : null}
-      {props.isColorBlack ? (
-        <Text
-          style={{
-            color: 'black',
-            fontWeight: '600',
-            fontSize: 18,
-            alignSelf: 'center',
-            textAlign: 'center',
-            width: '90%',
-          }}>
-          {string}
-        </Text>
-      ) : (
-        <Text
-          style={{
-            color: '#F65E7F',
-            fontWeight: '600',
-            fontSize: 18,
-            alignSelf: 'center',
-            textAlign: 'center',
-            width: '90%',
-          }}>
-          {string}
-        </Text>
-      )}
+
+      <Text
+        style={{
+          color: props.titleColor,
+          fontWeight: '600',
+          fontSize: 18,
+          alignSelf: 'center',
+          textAlign: 'center',
+          
+          
+        }}>
+        {props.headerTitle}
+      </Text>
 
       {props.isRightIocnShow ? (
         <TouchableOpacity onPress={props.onRightPress}>
@@ -187,6 +232,13 @@ export const CommonHeadder = ({string, ...props}) => {
       {props.isAddIconShow ? (
         <TouchableOpacity onPress={props.onRightPress}>
           <Ionicons name="ios-add-outline" size={30} color={'#F65E7F'} />
+        </TouchableOpacity>
+      ) : null}
+      {props.isRightTextShow ? (
+        <TouchableOpacity style = {{position:'absolute',right:0}} onPress = {props.rightTextonpRess}>
+        <Text style = {{color:props.rightTextColor,fontSize:20,}}>
+          {props.rightText}
+        </Text>
         </TouchableOpacity>
       ) : null}
     </View>
@@ -224,18 +276,35 @@ export const CommonModalDialog = ({message, ...props}) => {
           elevation: 5,
         }}>
         <Text style={{color: 'black'}}>{message}</Text>
+        <View style  = {{flexDirection:'row'}}>
+          {props.isAddIconShow?
         <TouchableOpacity
-          onPress={props.onPress}
+          onPress={props.leftBtnPress}
           style={{
             borderRadius: 20,
             marginTop: 40,
             height: 40,
-            width: '60%',
+            width: '50%',
+            marginRight:'5%',
             backgroundColor: '#F65E7F',
             justifyContent: 'center',
           }}>
-          <Text style={{color: 'white', alignSelf: 'center'}}>{'Close'}</Text>
+          <Text style={{color: 'white', alignSelf: 'center'}}>{props.leftBtnText}</Text>
+        </TouchableOpacity>:null}
+        <TouchableOpacity
+          onPress={props.rightBtnPress}
+          style={{
+            borderRadius: 20,
+            marginTop: 40,
+            height: 40,
+            width: '50%',
+            marginRight:'5%',
+            backgroundColor: '#F65E7F',
+            justifyContent: 'center',
+          }}>
+          <Text style={{color: 'white', alignSelf: 'center'}}>{props.rightBtnText}</Text>
         </TouchableOpacity>
+        </View>
       </View>
     </Modal>
   );
