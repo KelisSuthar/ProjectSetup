@@ -45,7 +45,7 @@ https://www.npmjs.com/package/react-native-element-dropdown
 https://www.npmjs.com/package/react-native-modal-datetime-picker
 
     npm i react-native-modal-datetime-picker
-
-
+=>For Country Codes and names
+https://gist.github.com/incredimike/1469814
 
 **Thankyou**
