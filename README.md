@@ -36,5 +36,16 @@ and can use this as refreance and usage of carousel
 
 https://www.npmjs.com/package/react-native-snap-carousel
 
+=> For Drop Down use this
+https://www.npmjs.com/package/react-native-element-dropdown
+
+    npm i react-native-element-dropdown
+    
+=> For Drop Down use this
+https://www.npmjs.com/package/react-native-modal-datetime-picker
+
+    npm i react-native-modal-datetime-picker
+=>For Country Codes and names
+https://gist.github.com/incredimike/1469814
 
 **Thankyou**
