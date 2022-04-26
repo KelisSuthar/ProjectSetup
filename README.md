@@ -48,4 +48,9 @@ https://www.npmjs.com/package/react-native-modal-datetime-picker
 =>For Country Codes and names
 https://gist.github.com/incredimike/1469814
 
+=>For Image Picker
+https://github.com/react-native-image-picker/react-native-image-picker
+as a refrence you can use this site https://enappd.com/blog/pick-images-from-camera-gallery-in-react-native-app/78/
+
+
 **Thankyou**
